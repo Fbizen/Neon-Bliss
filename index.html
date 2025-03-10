@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rolling Ball Scroll</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            height: 500vh; /* Creates a large scrollable area */
+            background: linear-gradient(to bottom, #1e1e1e, #4a90e2);
+            overflow-x: hidden;
+        }
+        .ball {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            width: 80px;
+            height: 80px;
+            background: radial-gradient(circle, white, blue);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: transform 0.2s ease-out;
+        }
+        .transition-effect {
+            animation: pulse 0.5s ease-in-out infinite alternate;
+        }
+        @keyframes pulse {
+            from { transform: translate(-50%, -50%) scale(1); }
+            to { transform: translate(-50%, -50%) scale(1.2); }
+        }
+    </style>
+</head>
+<body>
+    <div class="ball" id="rollingBall"></div>
+    <script>
+        let lastScrollY = 0;
+        const ball = document.getElementById('rollingBall');
+        const scrollThreshold = 200; // Adjust the scroll sensitivity
+        const transitionTicks = 4; // Number of scroll ticks before transition
+
+        window.addEventListener('scroll', () => {
+            let scrollY = window.scrollY;
+            let scrollDelta = scrollY - lastScrollY;
+            
+            let rotation = (scrollY / scrollThreshold) * 360;
+            ball.style.transform = `translate(-50%, -50%) rotate(${rotation}deg)`;
+
+            // Transition effect on first & last 4 ticks
+            if (scrollY < transitionTicks * scrollThreshold || 
+                (document.body.scrollHeight - window.innerHeight - scrollY) < transitionTicks * scrollThreshold) {
+                ball.classList.add('transition-effect');
+            } else {
+                ball.classList.remove('transition-effect');
+            }
+
+            lastScrollY = scrollY;
+        });
+    </script>
+</body>
+</html>
