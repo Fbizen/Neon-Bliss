@@ -12,12 +12,13 @@ scene.add(light);
 // Load 3D Model
 const loader = new THREE.GLTFLoader();
 let model;
-loader.load('model.glb', function(gltf) {
+
+loader.load('model.glb', function (gltf) {
     model = gltf.scene;
-    model.position.set(0, 0, -5); // Adjust position
+    model.position.set(0, 0, -5); // Adjust if needed
     scene.add(model);
     console.log("Model loaded successfully!");
-}, undefined, function(error) {
+}, undefined, function (error) {
     console.error("Error loading model:", error);
 });
 
@@ -26,14 +27,21 @@ camera.position.z = 5;
 
 // Scroll Event - Rotate the Model
 let lastScrollY = 0;
-const scrollThreshold = 200; // Adjust sensitivity
+const scrollThreshold = 100; // Sensitivity of rotation
 
-window.addEventListener('scroll', () => {
+function handleScroll() {
+    if (!model) return; // Ensure model is loaded before applying transformations
+
     let scrollY = window.scrollY;
-    let rotation = (scrollY / scrollThreshold) * Math.PI * 2;
-    if (model) model.rotation.y = rotation;
+    let rotation = (scrollY / scrollThreshold) * Math.PI * 2; // Convert to radians
+
+    model.rotation.y = rotation; // Rotate left-right
+    model.rotation.x = rotation * 0.5; // Slight tilt effect
+
     lastScrollY = scrollY;
-});
+}
+
+window.addEventListener('scroll', handleScroll);
 
 // Animation Loop
 function animate() {
