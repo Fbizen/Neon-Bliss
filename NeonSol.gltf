@@ -1,0 +1,121 @@
+{
+  "asset": {
+    "generator": "Khronos glTF Blender I/O v3.6.28",
+    "version": "2.0"
+  },
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "name": "Sphere"
+    }
+  ],
+  "materials": [
+    {
+      "doubleSided": true,
+      "name": "Texture_mat",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.800000011920929,
+          0.800000011920929,
+          0.800000011920929,
+          1
+        ],
+        "metallicFactor": 0,
+        "roughnessFactor": 0.5
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "name": "Sphere",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2
+          },
+          "indices": 3,
+          "material": 0
+        }
+      ]
+    }
+  ],
+  "accessors": [
+    {
+      "bufferView": 0,
+      "componentType": 5126,
+      "count": 29952,
+      "max": [
+        0.9872310161590576,
+        0.9975767135620117,
+        0.9872307181358337
+      ],
+      "min": [
+        -0.9872305393218994,
+        -0.9975767135620117,
+        -0.9872310161590576
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 29952,
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 29952,
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 3,
+      "componentType": 5123,
+      "count": 46044,
+      "type": "SCALAR"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 359424,
+      "byteOffset": 0,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 359424,
+      "byteOffset": 359424,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 239616,
+      "byteOffset": 718848,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 92088,
+      "byteOffset": 958464,
+      "target": 34963
+    }
+  ],
+  "buffers": [
+    {
+      "uri": "NeonSol_data.bin",
+      "byteLength": 1050552
+    }
+  ]
+}
