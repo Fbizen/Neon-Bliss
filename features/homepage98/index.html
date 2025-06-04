@@ -1,25 +1,61 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-<body>
-    <!-- First window -->
-    <div id="window1">
-        This is the first window.
+<html lang="en" class="h-full w-full">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GrimoireOS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="logicManager.js"></script>
+    <script src="draggable.js"></script>
+  </head>
+  <body class="h-full w-full text-white overflow-hidden relative">
+    <!-- GIF Background -->
+    <div class="absolute inset-0 z-0">
+      <img id="background-gif" src="https://media.giphy.com/media/xTiTnxpQ3ghPiB2Hp6/giphy.gif" alt="Background GIF" class="w-full h-full object-cover pointer-events-none" />
     </div>
 
-    <!-- Second window -->
-    <div id="window2">
-        And this is the second window.
+    <div id="desktop" class="relative w-full h-full z-10">
+      <div id="taskbar" class="absolute bottom-0 w-full h-12 bg-black/40 backdrop-blur-md shadow-lg flex items-center gap-2 px-2 overflow-x-auto"></div>
+      <div id="windows" class="absolute inset-0 z-20"></div>
+      <div id="icons" class="absolute inset-0 z-30 p-4"></div>
     </div>
-  <div class="bg-animation"></div>
-  <div class="bubbles">
-    <a href="#about" class="bubble">About</a>
-    <a href="#projects" class="bubble">Projects</a>
-    <a href="#contact" class="bubble">Contact</a>
-  </div>
-<script src="main.js" defer></script>
-</body>
+
+    <script>
+      const apps = [
+        {
+          id: 'notes',
+          title: 'Notes',
+          icon: '📝',
+          content: `<textarea class='w-full h-full bg-white text-black p-2 resize-none'></textarea>`
+        },
+        {
+          id: 'clock',
+          title: 'Clock',
+          icon: '⏰',
+          content: `<div class='text-4xl font-bold p-4 text-center' id='clock-time'></div>`
+        }
+      ];
+
+      const gifUrls = [
+        "https://media.giphy.com/media/xTiTnxpQ3ghPiB2Hp6/giphy.gif",
+        "https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif",
+        "https://media.giphy.com/media/l0MYB8Ory7Hqefo9a/giphy.gif"
+      ];
+
+      function updateClock() {
+        const el = document.getElementById('clock-time');
+        if (el) el.textContent = new Date().toLocaleTimeString();
+      }
+
+      let currentGif = 0;
+      setInterval(() => {
+        currentGif = (currentGif + 1) % gifUrls.length;
+        document.getElementById('background-gif').src = gifUrls[currentGif];
+        updateClock();
+      }, 1000);
+
+      logicManager();
+    </script>
+  </body>
 </html>
+  
