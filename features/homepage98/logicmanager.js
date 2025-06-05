@@ -19,23 +19,24 @@ function logicManager() {
     win.innerHTML = `
       <div class='flex items-center justify-between bg-slate-800 text-white p-2 cursor-move'>
         <span>${app.title}</span>
-        <button class='minimize-btn text-sm font-bold rounded w-6 h-6 text-center hover:bg-slate-600'>_</button>
+        <div class='flex gap-1'>
+          <button class='min-btn px-1'>🗕</button>
+          <button class='max-btn px-1'>🗖</button>
+        </div>
       </div>
       <div class='flex-1 bg-white text-black'>${app.content}</div>
     `;
 
-    const minimizeBtn = win.querySelector('.minimize-btn');
-    minimizeBtn.addEventListener('click', () => {
+    const closeBtn = win.querySelector('.max-btn');
+    closeBtn.addEventListener('click', () => {
+      win.remove();
+      const task = document.getElementById(`task-${app.id}`);
+      if (task) task.remove();
+    });
+
+    const minBtn = win.querySelector('.min-btn');
+    minBtn.addEventListener('click', () => {
       win.style.display = 'none';
-      const icon = document.createElement('div');
-      icon.id = `icon-${app.id}`;
-      icon.className = 'minimized-icon cursor-pointer text-center text-white hover:bg-slate-700 rounded-lg p-2 w-16';
-      icon.innerHTML = `<div class='text-3xl'>${app.icon}</div><div class='text-xs'>${app.title}</div>`;
-      icon.onclick = () => {
-        win.style.display = 'block';
-        icon.remove();
-      };
-      iconsEl.appendChild(icon);
     });
 
     const header = win.querySelector('.cursor-move');
@@ -46,8 +47,10 @@ function logicManager() {
     taskBtn.className = 'bg-slate-700 rounded px-2 py-1 hover:bg-slate-600';
     taskBtn.textContent = app.title;
     taskBtn.onclick = () => {
-      const winEl = document.getElementById(`window-${app.id}`);
-      if (winEl) winEl.style.display = winEl.style.display === 'none' ? 'block' : 'none';
+      if (win.style.display === 'none') {
+        win.style.display = '';
+      }
+      win.scrollIntoView({ behavior: 'smooth', block: 'center' });
     };
     taskbarEl.appendChild(taskBtn);
   }

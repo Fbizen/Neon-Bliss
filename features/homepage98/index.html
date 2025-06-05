@@ -1,18 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GrimoireOS</title>
-  <link rel="stylesheet" href="https://unpkg.com/98.css" />
-  <script src="logicManager.js"></script>
-  <script src="draggable.js"></script>
-</head>
-<body style="margin: 0; overflow: hidden;">
-  <!-- GIF Background -->
-  <div style="position: absolute; inset: 0; z-index: 0;">
-    <img id="background-gif" src="https://media.giphy.com/media/xTiTnxpQ3ghPiB2Hp6/giphy.gif" alt="Background GIF" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;">
-  </div>
+<html lang="en" class="h-full w-full">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GrimoireOS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="logicmanager.js"></script>
+    <script src="draggable.js"></script>
+  </head>
+  <body class="h-full w-full text-white overflow-hidden relative">
+    <!-- GIF Background -->
+    <div class="absolute inset-0 z-0">
+      <img id="background-gif" src="https://media.giphy.com/media/xTiTnxpQ3ghPiB2Hp6/giphy.gif" alt="Background GIF" class="w-full h-full object-cover pointer-events-none" />
+    </div>
 
   <div id="desktop" style="position: relative; width: 100vw; height: 100vh; z-index: 10;">
     <div id="taskbar" class="window" style="position: absolute; bottom: 0; width: 100%; height: 48px; display: flex; align-items: center; overflow-x: auto; padding: 4px; background: rgba(0, 0, 0, 0.4);">
