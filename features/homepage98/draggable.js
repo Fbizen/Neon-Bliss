@@ -1,19 +1,22 @@
-function makeDraggableWithClick(el, onClick) {
+function makeDraggableWithClick(dragHandle, onClick) {
   let startX, startY, dragging = false;
+  const container = dragHandle.parentElement.parentElement; // move the whole window
 
-  el.addEventListener('mousedown', function (e) {
+  dragHandle.addEventListener('mousedown', function (e) {
+    e.preventDefault(); // prevent text selection
     startX = e.clientX;
     startY = e.clientY;
-    const offsetX = e.clientX - el.offsetLeft;
-    const offsetY = e.clientY - el.offsetTop;
+
+    const offsetX = e.clientX - container.offsetLeft;
+    const offsetY = e.clientY - container.offsetTop;
 
     function onMouseMove(e) {
       const dx = e.clientX - startX;
       const dy = e.clientY - startY;
       if (!dragging && (Math.abs(dx) > 5 || Math.abs(dy) > 5)) dragging = true;
       if (dragging) {
-        el.style.left = `${e.clientX - offsetX}px`;
-        el.style.top = `${e.clientY - offsetY}px`;
+        container.style.left = `${e.clientX - offsetX}px`;
+        container.style.top = `${e.clientY - offsetY}px`;
       }
     }
 
