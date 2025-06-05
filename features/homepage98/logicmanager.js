@@ -9,18 +9,18 @@ function logicManager() {
 
     const win = document.createElement('div');
     win.id = windowId;
-    win.className = `absolute left-20 top-20 w-96 h-64 bg-white text-black shadow-2xl rounded-2xl flex flex-col overflow-hidden border border-slate-900`;
+    win.className = `win98 absolute left-20 top-20 w-96 h-64 flex flex-col overflow-hidden`;
     windowsEl.appendChild(win);
 
     win.innerHTML = `
-      <div class='flex items-center justify-between bg-slate-800 text-white p-2 cursor-move'>
+      <div class='title-bar'>
         <span>${app.title}</span>
-        <div class='flex gap-1'>
-          <button class='min-btn px-1'>🗕</button>
-          <button class='max-btn px-1'>🗖</button>
+        <div>
+          <button class='window-btn min-btn'>🗕</button>
+          <button class='window-btn max-btn'>🗖</button>
         </div>
       </div>
-      <div class='flex-1 bg-white text-black'>${app.content}</div>
+      <div class='flex-1 bg-white text-black p-1'>${app.content}</div>
     `;
 
     const closeBtn = win.querySelector('.max-btn');
@@ -35,7 +35,7 @@ function logicManager() {
       win.style.display = 'none';
     });
 
-    const header = win.querySelector('.cursor-move');
+    const header = win.querySelector('.title-bar');
     makeDraggableWithClick(header, () => win.scrollIntoView({ behavior: 'smooth', block: 'center' }));
 
     const taskBtn = document.createElement('button');
