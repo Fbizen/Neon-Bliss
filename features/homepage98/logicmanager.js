@@ -15,16 +15,24 @@ function logicManager() {
     win.innerHTML = `
       <div class='flex items-center justify-between bg-slate-800 text-white p-2 cursor-move'>
         <span>${app.title}</span>
-        <button class='close-btn'>❌</button>
+        <div class='flex gap-1'>
+          <button class='min-btn px-1'>🗕</button>
+          <button class='max-btn px-1'>🗖</button>
+        </div>
       </div>
       <div class='flex-1 bg-white text-black'>${app.content}</div>
     `;
 
-    const closeBtn = win.querySelector('.close-btn');
+    const closeBtn = win.querySelector('.max-btn');
     closeBtn.addEventListener('click', () => {
       win.remove();
       const task = document.getElementById(`task-${app.id}`);
       if (task) task.remove();
+    });
+
+    const minBtn = win.querySelector('.min-btn');
+    minBtn.addEventListener('click', () => {
+      win.style.display = 'none';
     });
 
     const header = win.querySelector('.cursor-move');
@@ -34,7 +42,12 @@ function logicManager() {
     taskBtn.id = `task-${app.id}`;
     taskBtn.className = 'bg-slate-700 rounded px-2 py-1 hover:bg-slate-600';
     taskBtn.textContent = app.title;
-    taskBtn.onclick = () => win.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    taskBtn.onclick = () => {
+      if (win.style.display === 'none') {
+        win.style.display = '';
+      }
+      win.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    };
     taskbarEl.appendChild(taskBtn);
   }
 
