@@ -1,10 +1,24 @@
 # Neon-Bliss
 
-#const gifUrls = [
-        "https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExNnM5Z3N6ZmRuNDBtN2Y4M2F5bTgxdjk4NGtmcGJxYjR0aHJ1OTdpOCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/wgGVH4qt5Qg9S7Lan9/giphy.gif",
-        "https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExNDc2b2IyNWxzdXFtZGtiazM3YXFnYWwzOGpqeXo0bTVubHF0eWR2MCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/qtNGa95cbq29EGi3ib/giphy.gif",
-        "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExb3lzc3A2NmJuaHY5NnB0ZXp2cGR5a2Nrd3dvZTVuOWZkZDNtbHc2NyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/5ZYA31R5OP6JdmVP3f/giphy.gif",
-        "https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExbTRtYXA4N2JoOHN0OWNpZzlnazJiZGN6Y3dhc2Fua2x0NTBqY2ZwdiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/gY8Bs8qvD1EukQBj5V/giphy.gif",
-        "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExem41Z3U3aHhoMnZsOGtqZ2p4djk2NG82NWo4a2JpaWVnMDlhZHZnbyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/srpPpyxtltdAmbaNsa/giphy.gif",
-        "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExb3lzc3A2NmJuaHY5NnB0ZXp2cGR5a2Nrd3dvZTVuOWZkZDNtbHc2NyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/5ZYA31R5OP6JdmVP3f/giphy.gif"
-      ];
+Neon-Bliss is a small collection of front‑end experiments ranging from simple HTML demos to a React + Vite project. It contains interactive pages that can be opened directly in the browser as well as a Vite setup for local development.
+
+## Opening the static demos
+
+Open these files in your browser:
+
+- `index.html` – showcases a rolling ball scroll effect.
+- `features/homepage98/index.html` – launches a retro themed desktop interface.
+
+No build step is required for these pages; simply open them from your filesystem.
+
+## Running the Vite project
+
+The `features/rollerscroller` directory is a React project powered by Vite. Start it locally with:
+
+```bash
+cd features/rollerscroller
+npm install
+npm run dev
+```
+
+The development server will print the local URL (typically `http://localhost:5173/`). Use `Ctrl+C` to stop it.
