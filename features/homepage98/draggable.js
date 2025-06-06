@@ -1,6 +1,7 @@
 function makeDraggableWithClick(dragHandle, onClick) {
   let startX, startY, dragging = false;
-  const container = dragHandle.parentElement.parentElement; // move the whole window
+  // Determine the element that should move when dragging
+  const container = dragHandle.parentElement;
 
   dragHandle.addEventListener('mousedown', function (e) {
     e.preventDefault(); // prevent text selection
