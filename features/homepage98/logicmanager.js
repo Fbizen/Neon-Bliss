@@ -9,32 +9,45 @@ function logicManager() {
 
     const win = document.createElement('div');
     win.id = windowId;
-    win.className = `absolute left-20 top-20 w-96 h-64 bg-white text-black shadow-2xl rounded-2xl flex flex-col overflow-hidden border border-slate-900`;
+    win.className = `win98 absolute left-20 top-20 w-96 h-64 flex flex-col overflow-hidden`;
     windowsEl.appendChild(win);
 
     win.innerHTML = `
-      <div class='flex items-center justify-between bg-slate-800 text-white p-2 cursor-move'>
+      <div class='title-bar'>
         <span>${app.title}</span>
-        <button class='close-btn'>❌</button>
+        <div>
+          <button class='window-btn min-btn'>🗕</button>
+          <button class='window-btn max-btn'>🗖</button>
+        </div>
       </div>
-      <div class='flex-1 bg-white text-black'>${app.content}</div>
+      <div class='flex-1 bg-white text-black p-1'>${app.content}</div>
     `;
 
-    const closeBtn = win.querySelector('.close-btn');
+    const closeBtn = win.querySelector('.max-btn');
     closeBtn.addEventListener('click', () => {
       win.remove();
       const task = document.getElementById(`task-${app.id}`);
       if (task) task.remove();
     });
 
-    const header = win.querySelector('.cursor-move');
+    const minBtn = win.querySelector('.min-btn');
+    minBtn.addEventListener('click', () => {
+      win.style.display = 'none';
+    });
+
+    const header = win.querySelector('.title-bar');
     makeDraggableWithClick(header, () => win.scrollIntoView({ behavior: 'smooth', block: 'center' }));
 
     const taskBtn = document.createElement('button');
     taskBtn.id = `task-${app.id}`;
     taskBtn.className = 'bg-slate-700 rounded px-2 py-1 hover:bg-slate-600';
     taskBtn.textContent = app.title;
-    taskBtn.onclick = () => win.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    taskBtn.onclick = () => {
+      if (win.style.display === 'none') {
+        win.style.display = '';
+      }
+      win.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    };
     taskbarEl.appendChild(taskBtn);
   }
 

@@ -2,6 +2,7 @@ function makeDraggableWithClick(el, onClick) {
   let startX, startY, dragging = false;
 
   el.addEventListener('mousedown', function (e) {
+    e.preventDefault();
     startX = e.clientX;
     startY = e.clientY;
     const offsetX = e.clientX - el.offsetLeft;
