@@ -61,6 +61,7 @@ function logicManager() {
       icon.className = 'absolute cursor-pointer text-center text-white hover:bg-slate-700 rounded-lg p-2 w-16';
       icon.style.left = `${40 + index * 100}px`;
       icon.style.top = `40px`;
+      icon.style.pointerEvents = 'auto';
       icon.innerHTML = `<div class='text-3xl'>${app.icon}</div><div class='text-xs'>${app.title}</div>`;
       iconsEl.appendChild(icon);
 
